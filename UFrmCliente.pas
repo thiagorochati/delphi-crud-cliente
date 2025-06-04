@@ -205,6 +205,11 @@ begin
   QDados.ParamByName('EMAIL').Value := EditEmailUsuario.Text;
   QDados.ExecSQL;
 
+  //Depois que gravei, limpo os campos
+  EditNomeUsuario.Text  := '';
+  EditSenhaUsuario.Text := '';
+  EditEmailUsuario.Text := '';
+
   MudaAba.tab := TabLogin;
   Mudaaba.ExecuteTarget(Self);
 end;
@@ -230,6 +235,10 @@ begin
   QDados.ParamByName('EMAIL').Value := EditEmail.Text;
   QDados.ExecSQL;
 
+  //Depois que gravei, limpo os campos
+  EditNome.Text  := '';
+  EditCPF.Text   := '';
+  EditEmail.Text := '';
 
   MudaAba.tab := TabConsulta;
   Mudaaba.ExecuteTarget(Self);
