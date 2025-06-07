@@ -54,10 +54,10 @@ type
     Layout5: TLayout;
     Layout6: TLayout;
     Rectangle6: TRectangle;
-    Edit1: TEdit;
+    EditEmailLogin: TEdit;
     Rectangle7: TRectangle;
-    Edit2: TEdit;
-    Z: TRectangle;
+    EditSenhaLogin: TEdit;
+    btnLogin: TRectangle;
     Label8: TLabel;
     Rectangle9: TRectangle;
     Image3: TImage;
@@ -84,6 +84,7 @@ type
     procedure FDConnection1AfterConnect(Sender: TObject);
     procedure Rectangle10Click(Sender: TObject);
     procedure Label14Click(Sender: TObject);
+    procedure btnLoginClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -133,6 +134,27 @@ begin
   end;
 
   VertCliente.EndUpdate;
+end;
+
+procedure TForm1.btnLoginClick(Sender: TObject);
+begin
+  QDados.Close;
+  QDados.SQL.Clear;
+  QDados.SQL.Add('SELECT * FROM USUARIO WHERE EMAIL = :EMAIL AND SENHA = :SENHA');
+  QDados.ParamByName('EMAIL').Value := EditEmailLogin.Text;
+  QDados.ParamByName('SENHA').Value := EditSenhaLogin.Text;
+  QDados.Open;
+
+  if QDados.IsEmpty then
+  begin
+    ShowMessage('Usuário ou senha inválida');
+  end
+  else
+  begin
+    ShowMessage('Olá ' + QDados.FieldByName('NOME').AsString + ' seja bem vindo!');
+    MudaAba.Tab := TabConsulta;
+    MudaAba.ExecuteTarget(Self);
+  end;
 end;
 
 procedure TForm1.FDConnection1AfterConnect(Sender: TObject);

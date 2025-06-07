@@ -14,7 +14,7 @@ object Form1: TForm1
     Size.Width = 384.000000000000000000
     Size.Height = 503.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -31,7 +31,7 @@ object Form1: TForm1
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 68.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -2615,7 +2615,7 @@ object Form1: TForm1
             Stroke.Kind = None
             XRadius = 8.000000000000000000
             YRadius = 8.000000000000000000
-            object Edit1: TEdit
+            object EditEmailLogin: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
               Align = Client
               StyleLookup = 'transparentedit'
@@ -2641,7 +2641,7 @@ object Form1: TForm1
             Stroke.Kind = None
             XRadius = 8.000000000000000000
             YRadius = 8.000000000000000000
-            object Edit2: TEdit
+            object EditSenhaLogin: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
               Align = Client
               StyleLookup = 'transparentedit'
@@ -2656,7 +2656,7 @@ object Form1: TForm1
               TextPrompt = 'Informe a sua senha'
             end
           end
-          object Z: TRectangle
+          object btnLogin: TRectangle
             Align = Top
             Fill.Color = xFFBFC8EA
             Margins.Top = 8.000000000000000000
@@ -2667,6 +2667,7 @@ object Form1: TForm1
             Stroke.Kind = None
             XRadius = 8.000000000000000000
             YRadius = 8.000000000000000000
+            OnClick = btnLoginClick
             object Label8: TLabel
               Align = Center
               StyledSettings = [Family]
@@ -2807,7 +2808,7 @@ object Form1: TForm1
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 86.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
