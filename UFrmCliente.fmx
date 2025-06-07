@@ -2615,7 +2615,7 @@ object Form1: TForm1
             Stroke.Kind = None
             XRadius = 8.000000000000000000
             YRadius = 8.000000000000000000
-            object Edit1: TEdit
+            object EditEmailLogin: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
               Align = Client
               StyleLookup = 'transparentedit'
@@ -2641,7 +2641,7 @@ object Form1: TForm1
             Stroke.Kind = None
             XRadius = 8.000000000000000000
             YRadius = 8.000000000000000000
-            object Edit2: TEdit
+            object EditSenhaLogin: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
               Align = Client
               StyleLookup = 'transparentedit'
@@ -2656,7 +2656,7 @@ object Form1: TForm1
               TextPrompt = 'Informe a sua senha'
             end
           end
-          object Z: TRectangle
+          object btnLogin: TRectangle
             Align = Top
             Fill.Color = xFFBFC8EA
             Margins.Top = 8.000000000000000000
@@ -2667,6 +2667,7 @@ object Form1: TForm1
             Stroke.Kind = None
             XRadius = 8.000000000000000000
             YRadius = 8.000000000000000000
+            OnClick = btnLoginClick
             object Label8: TLabel
               Align = Center
               StyledSettings = [Family]
