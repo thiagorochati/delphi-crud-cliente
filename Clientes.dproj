@@ -213,7 +213,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="UFrmCliente.pas">
-            <Form>Form1</Form>
+            <Form>FrmCliente</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="UFrameCliente.pas">
