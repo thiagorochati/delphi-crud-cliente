@@ -19,7 +19,7 @@ uses
   Data.Bind.DBScope, FMX.ListView, System.IOUtils;
 
 type
-  TForm1 = class(TForm)
+  TFrmCliente = class(TForm)
     TabControl1: TTabControl;
     TabConsulta: TTabItem;
     TabCadastro: TTabItem;
@@ -91,10 +91,11 @@ type
     procedure AtualizaCliente; //Ctrl + Shift + C
   public
     { Public declarations }
+    procedure DeletaCliente(vCodigo: integer);
   end;
 
 var
-  Form1: TForm1;
+  FrmCliente: TFrmCliente;
 
 implementation
 
@@ -102,7 +103,7 @@ implementation
 
 uses UFrameCliente;
 
-procedure TForm1.AtualizaCliente;
+procedure TFrmCliente.AtualizaCliente;
 var
   i : integer;
   Frame : TFrameCliente;
@@ -126,6 +127,8 @@ begin
     Frame.LabelNome.Text  := QDados.FieldByName('NOME').AsString;
     Frame.LabelEmail.Text := QDados.FieldByName('EMAIL').AsString;
 
+    Frame.pIdCliente := QDados.FieldByName('ID_CLIENTE').AsInteger;
+
     Frame.Align := TAlignLayout.Top;
 
     VertCliente.AddObject(Frame);
@@ -136,7 +139,7 @@ begin
   VertCliente.EndUpdate;
 end;
 
-procedure TForm1.btnLoginClick(Sender: TObject);
+procedure TFrmCliente.btnLoginClick(Sender: TObject);
 begin
   QDados.Close;
   QDados.SQL.Clear;
@@ -152,12 +155,24 @@ begin
   else
   begin
     ShowMessage('Olá ' + QDados.FieldByName('NOME').AsString + ' seja bem vindo!');
+    AtualizaCliente;
     MudaAba.Tab := TabConsulta;
     MudaAba.ExecuteTarget(Self);
   end;
 end;
 
-procedure TForm1.FDConnection1AfterConnect(Sender: TObject);
+procedure TFrmCliente.DeletaCliente(vCodigo: integer);
+begin
+  QDados.Close;
+  QDados.SQL.Clear;
+  QDados.SQL.Add('DELETE FROM CLIENTE WHERE ID_CLIENTE =:ID_CLIENTE');
+  QDados.ParamByName('ID_CLIENTE').Value := vCodigo;
+  QDados.ExecSQL;
+
+  AtualizaCliente;
+end;
+
+procedure TFrmCliente.FDConnection1AfterConnect(Sender: TObject);
 var
   Aux : String;
 begin
@@ -181,32 +196,30 @@ begin
 
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TFrmCliente.FormShow(Sender: TObject);
 begin
   FDConnection1.Params.Values['Database'] :=
   System.IOUtils.TPath.GetDocumentsPath + '/BDCadastro.sql';
-
-  AtualizaCliente;
 end;
 
-procedure TForm1.Image1Click(Sender: TObject);
+procedure TFrmCliente.Image1Click(Sender: TObject);
 begin
   MudaAba.tab := TabConsulta;
   Mudaaba.ExecuteTarget(Self);
 end;
 
-procedure TForm1.Image2Click(Sender: TObject);
+procedure TFrmCliente.Image2Click(Sender: TObject);
 begin
   AtualizaCliente;
 end;
 
-procedure TForm1.Label14Click(Sender: TObject);
+procedure TFrmCliente.Label14Click(Sender: TObject);
 begin
   MudaAba.Tab := TabUsuario;
   MudaAba.ExecuteTarget(Self)
 end;
 
-procedure TForm1.Rectangle10Click(Sender: TObject);
+procedure TFrmCliente.Rectangle10Click(Sender: TObject);
 var
   Aux : String;
 begin
@@ -236,7 +249,7 @@ begin
   Mudaaba.ExecuteTarget(Self);
 end;
 
-procedure TForm1.Rectangle2Click(Sender: TObject);
+procedure TFrmCliente.Rectangle2Click(Sender: TObject);
 var
   Aux : String;
 begin
@@ -266,7 +279,7 @@ begin
   Mudaaba.ExecuteTarget(Self);
 end;
 
-procedure TForm1.Rectangle3Click(Sender: TObject);
+procedure TFrmCliente.Rectangle3Click(Sender: TObject);
 begin
   MudaAba.tab := TabCadastro;
   Mudaaba.ExecuteTarget(Self);
