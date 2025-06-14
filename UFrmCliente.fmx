@@ -2646,6 +2646,7 @@ object FrmCliente: TFrmCliente
               Align = Client
               StyleLookup = 'transparentedit'
               TabOrder = 0
+              Password = True
               Margins.Left = 5.000000000000000000
               Margins.Top = 5.000000000000000000
               Margins.Right = 5.000000000000000000

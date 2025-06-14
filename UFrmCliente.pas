@@ -198,6 +198,9 @@ end;
 
 procedure TFrmCliente.FormShow(Sender: TObject);
 begin
+  TabControl1.TabPosition := TTabPosition.None;
+  TabControl1.ActiveTab := TabLogin;
+
   FDConnection1.Params.Values['Database'] :=
   System.IOUtils.TPath.GetDocumentsPath + '/BDCadastro.sql';
 end;
