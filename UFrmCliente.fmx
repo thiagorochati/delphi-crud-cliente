@@ -14,7 +14,7 @@ object FrmCliente: TFrmCliente
     Size.Width = 384.000000000000000000
     Size.Height = 503.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 0
+    TabIndex = 3
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -31,7 +31,7 @@ object FrmCliente: TFrmCliente
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = True
+      IsSelected = False
       Size.Width = 68.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -2983,7 +2983,7 @@ object FrmCliente: TFrmCliente
         item
         end>
       TextSettings.Trimming = None
-      IsSelected = False
+      IsSelected = True
       Size.Width = 79.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False

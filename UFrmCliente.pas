@@ -193,16 +193,30 @@ begin
          '  PRIMARY KEY (ID_USUARIO)) ';
 
   FDConnection1.ExecSQL(Aux);
-
 end;
 
 procedure TFrmCliente.FormShow(Sender: TObject);
 begin
   TabControl1.TabPosition := TTabPosition.None;
-  TabControl1.ActiveTab := TabLogin;
+  TabControl1.ActiveTab   := TabLogin;
 
   FDConnection1.Params.Values['Database'] :=
   System.IOUtils.TPath.GetDocumentsPath + '/BDCadastro.sql';
+
+  QDados.Close;
+  QDados.SQL.Clear;
+  QDados.SQL.Add('SELECT * FROM USUARIO WHERE EMAIL = ''admin'' ');
+  QDados.Open;
+  if QDados.IsEmpty then
+  begin
+    QDados.Close;
+    QDados.SQL.Clear;
+    QDados.SQL.Add('insert into USUARIO (nome, email, senha) values (:nome, :email, :senha)');
+    QDados.ParamByName('NOME').Value := 'Administrador';
+    QDados.ParamByName('EMAIL').Value := 'admin';
+    QDados.ParamByName('SENHA').Value := 'admin';
+    QDados.ExecSQL;
+  end;
 end;
 
 procedure TFrmCliente.Image1Click(Sender: TObject);
